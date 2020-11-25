@@ -9,6 +9,7 @@ brew "cmake"
 brew "node@12"
 brew "ruby@2.6"
 brew "ruby-build"
+brew "go"
 
 # Give me the good beers please (installs proper version based on youi-tv doctor)
 brew "calvinlewis/beerme/ninja"
