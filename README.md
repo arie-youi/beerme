@@ -4,9 +4,9 @@ The purpose of this repo is to ensure the proper third party dependencies for th
 ## Install 6.0 Dependencies
 `brew bundle`
 
-## Installing older casks manually
+## Installing older formula/casks manually
 ```
-brew tap calvinlewis/youi
+brew tap calvinlewis/beerme https://github.com/calvinlewis/beerme.git
 brew install calvinlewis/beerme/<formula>
 brew cask install calvinlewis/beerme/<cask>
 ```
