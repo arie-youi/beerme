@@ -1,8 +1,6 @@
 tap "homebrew/cask"
 tap "calvinlewis/beerme", "https://github.com/calvinlewis/beerme.git"
 
-cask "android-ndk"
-
 brew "yarn"
 brew "watchman"
 brew "node@12"
