@@ -1,8 +1,15 @@
 # 🍺 You.i TV Homebrew 🍺
 The purpose of this repo is to ensure the proper third party dependencies for the You.i Engine are installed at the correct versions as per `youi-tv doctor`.
 
+## Install Homebrew
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ## Install 6.0 Dependencies
-`brew bundle`
+```
+brew bundle
+```
 
 ## Installing older formula/casks manually
 ```
