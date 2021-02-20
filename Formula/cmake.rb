@@ -1,60 +1,65 @@
 class Cmake < Formula
-    desc "Cross-platform make"
-    homepage "https://www.cmake.org/"
-    url "https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz"
-    sha256 "597c61358e6a92ecbfad42a9b5321ddd801fc7e7eca08441307c9138382d4f77"
-    license "BSD-3-Clause"
-    head "https://gitlab.kitware.com/cmake/cmake.git"
+  desc "Cross-platform make"
+  homepage "https://www.cmake.org/"
+  url "https://github.com/Kitware/CMake/releases/download/v3.19.5/cmake-3.19.5.tar.gz"
+  sha256 "c432296eb5dec6d71eae15d140f6297d63df44e9ffe3e453628d1dc8fc4201ce"
+  license "BSD-3-Clause"
+  head "https://gitlab.kitware.com/cmake/cmake.git"
 
-    livecheck do
-      url "https://cmake.org/download/"
-      regex(/Latest Release \(v?(\d+(?:\.\d+)+)\)/i)
-    end
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
 
-    bottle do
-      cellar :any_skip_relocation
-      sha256 "e812869b03bb867cafd5b71fa36afb795b44a59a907f132f1b6837ea72860a0c" => :big_sur
-      sha256 "c7c42e66c63448e4aee44498b374c9985f477b129fccca5dd9c13530d1e680ef" => :catalina
-      sha256 "a0b167ad7f2fbf6f6dbcca9d74cb09acbd7822c54873803e940abf04272f8028" => :mojave
-      sha256 "98704ab50ed76df9214083c01e373277ba02aad43c858182be7ed1466d005326" => :high_sierra
-    end
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "c242c56b2cfc3053a1b277eaa1d5fd6cf1e50c469fd5c5091d9bf7b475bbffb5"
+    sha256 cellar: :any_skip_relocation, big_sur:       "a682d329ab579365215c7f409810e10b199df02d8856a760d472d4fb7c30bb42"
+    sha256 cellar: :any_skip_relocation, catalina:      "4f33e84c319f1ded3f2c3b26e57c9727b3842b1a44863054c83158203ad52e75"
+    sha256 cellar: :any_skip_relocation, mojave:        "375c91283a2b18b80c99b9e93c8344fe9351d39b87927e89449bbcbb1ca2c10b"
+  end
 
-    depends_on "sphinx-doc" => :build
+  depends_on "sphinx-doc" => :build
 
-    on_linux do
-      depends_on "openssl@1.1"
-    end
+  uses_from_macos "ncurses"
 
-    # The completions were removed because of problems with system bash
+  on_linux do
+    depends_on "openssl@1.1"
+  end
 
-    # The `with-qt` GUI option was removed due to circular dependencies if
-    # CMake is built with Qt support and Qt is built with MySQL support as MySQL uses CMake.
-    # For the GUI application please instead use `brew cask install cmake`.
+  # The completions were removed because of problems with system bash
 
-    def install
-      args = %W[
-        --prefix=#{prefix}
-        --no-system-libs
-        --parallel=#{ENV.make_jobs}
-        --datadir=/share/cmake
-        --docdir=/share/doc/cmake
-        --mandir=/share/man
-        --sphinx-build=#{Formula["sphinx-doc"].opt_bin}/sphinx-build
-        --sphinx-html
-        --sphinx-man
+  # The `with-qt` GUI option was removed due to circular dependencies if
+  # CMake is built with Qt support and Qt is built with MySQL support as MySQL uses CMake.
+  # For the GUI application please instead use `brew install --cask cmake`.
+
+  def install
+    args = %W[
+      --prefix=#{prefix}
+      --no-system-libs
+      --parallel=#{ENV.make_jobs}
+      --datadir=/share/cmake
+      --docdir=/share/doc/cmake
+      --mandir=/share/man
+      --sphinx-build=#{Formula["sphinx-doc"].opt_bin}/sphinx-build
+      --sphinx-html
+      --sphinx-man
+    ]
+    on_macos do
+      args += %w[
         --system-zlib
         --system-bzip2
         --system-curl
       ]
-
-      system "./bootstrap", *args, "--", *std_cmake_args,
-                                         "-DCMake_INSTALL_EMACS_DIR=#{elisp}"
-      system "make"
-      system "make", "install"
     end
 
-    test do
-      (testpath/"CMakeLists.txt").write("find_package(Ruby)")
-      system bin/"cmake", "."
-    end
+    system "./bootstrap", *args, "--", *std_cmake_args,
+                                       "-DCMake_INSTALL_EMACS_DIR=#{elisp}"
+    system "make"
+    system "make", "install"
   end
+
+  test do
+    (testpath/"CMakeLists.txt").write("find_package(Ruby)")
+    system bin/"cmake", "."
+  end
+end
