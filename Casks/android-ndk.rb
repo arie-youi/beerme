@@ -1,4 +1,4 @@
-cask 'android-ndk@17' do
+cask 'android-ndk' do
     version '17'
     sha256 '0ccd8fbbd987932f846c76a1a0c8402925461feb161ead353339c508ab3bf1f5'
 
