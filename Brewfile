@@ -1,4 +1,4 @@
-tap "calvinlewis/beerme", "https://github.com/calvinlewis/beerme.git"
+tap "arie-youi/beerme", "https://github.com/arie-youi/beerme.git"
 
 #brew "yarn"
 #brew "watchman"
@@ -8,7 +8,7 @@ tap "calvinlewis/beerme", "https://github.com/calvinlewis/beerme.git"
 #brew "ninja"
 #brew "ios-deploy"
 
-brew "calvinlewis/beerme/cmake"
-cask "calvinlewis/beerme/old/android-ndk/17/android-ndk"
+brew "arie-youi/beerme/cmake"
+cask "arie-youi/beerme/old/17/android-ndk"
 # brew "calvinlewis/beerme/ninja"
 # brew "calvinlewis/beerme/ios-deploy"
