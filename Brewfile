@@ -9,6 +9,6 @@ tap "arie-youi/beerme", "https://github.com/arie-youi/beerme.git"
 #brew "ios-deploy"
 
 brew "arie-youi/beerme/cmake"
-cask "arie-youi/beerme/old/17/android-ndk"
+cask "arie-youi/beerme/android-ndk_17"
 # brew "calvinlewis/beerme/ninja"
 # brew "calvinlewis/beerme/ios-deploy"
