@@ -1,4 +1,4 @@
-tap "local-h/beerme", "https://github.com/arie-youi/beerme.git"
+tap "arie-youi/beerme", "https://github.com/arie-youi/beerme.git"
 
 #brew "yarn"
 #brew "watchman"
