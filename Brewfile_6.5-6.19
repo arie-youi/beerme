@@ -1,0 +1,6 @@
+tap "arie-youi/beerme", "https://github.com/arie-youi/beerme.git"
+#tap "AdoptOpenJDK/openjdk", "https://github.com/AdoptOpenJDK/homebrew-openjdk.git"
+
+cask "arie-youi/beerme/cmake_3.19"
+#cask "arie-youi/beerme/android-ndk_23e"
+#cask "AdoptOpenJDK/openjdk/adoptopenjdk8"

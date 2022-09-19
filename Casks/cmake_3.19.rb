@@ -1,5 +1,5 @@
-cask "cmake_3.18" do
-    version "3.18.4"
+cask "cmake_3.19" do
+    version "3.19.7"
     sha256 "4002a65daa60a47ee7fd6e8bc5ae321a346071d17a83e270d012fdbd29ee9e76"
   
     url "https://www.cmake.org/files/v#{version.major_minor}/cmake-#{version}-Darwin-x86_64.dmg"

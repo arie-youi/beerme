@@ -1,4 +1,4 @@
-cask 'cmake@3.16' do
+cask 'cmake_3.16' do
     version '3.16.5'
     sha256 'c6f9d22e435414a7b453cd7f517f1c16c9a505ea64a36695ce498c8679b59332'
 
